@@ -171,7 +171,7 @@
     PageParams.syncSpPicker();
     PageParams.onCityParamChange();
     PageParams.initCard();
-    setIncomeType('labor');
+    setIncomeType('salary');
     PagePolicy.onPmCityChange();   // 政策库页初始化：城市下拉 + 编辑器 + 存储状态
 
     // 回归自检由 node tests/run.js 或手动调用 TaxTest.runAll() 执行，
