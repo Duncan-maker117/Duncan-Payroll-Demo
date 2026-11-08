@@ -600,7 +600,7 @@ function runBatchPipelineTests() {
   const origGetByIdGate = document.getElementById;
   const gateEls = {};
   try {
-    document.getElementById = id => (gateEls[id] = gateEls[id] || origGetByIdGate(id));
+    document.getElementById = id => (gateEls[id] = gateEls[id] || origGetByIdGate.call(document, id));
     PageBatch.processWithMapping([
       ['张三', '上半年', '10000'],
       ['张三', '', '8000'],
