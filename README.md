@@ -1,4 +1,12 @@
-# 个税计算器 · 劳务报酬 / 工资薪金
+# Duncan Payroll Demo · 个税与薪酬计算
+
+一个供 HR 查看薪酬计算和批量处理流程的纯前端演示，基于 [TaxCalculatorWeb](https://github.com/WingkySky/TaxCalculatorWeb) 整理。在线地址：[打开薪酬计算演示](https://duncan-maker117.github.io/Duncan-Payroll-Demo/)。
+
+**演示方式**：打开页面后切换至「工资薪金」，选择城市并设置工资参数；进入「批量计算」上传工资表，检查列映射后计算，可导出 Excel / CSV，或通过浏览器打印功能另存为 PDF。页面中的 Excel 模板可用于核对支持的字段。
+
+**模拟数据**：[100 人薪酬演示表](demo/虚构员工薪酬_100人_演示.xlsx)包含 100 名虚构员工、3 个月共 300 条记录；[异常数据测试表](demo/虚构员工薪酬_异常测试.xlsx)供测试缺失、重复及异常金额，不建议用于首次正常演示。薪酬组成仅供查看，批量计算使用表中的「应发工资」合计列；不含真实员工身份、银行卡等信息。
+
+数据在浏览器本地处理；政策库、主题等设置保存在当前浏览器中，清除站点数据后可能丢失，跨设备请导出备份。模拟数据只用于演示，内置政策数值含参考值及待核实项，实际薪税工作应依据当地最新政策和企业口径复核。
 
 一款专业的在线个税计算工具，支持两大所得类型：
 
@@ -95,7 +103,7 @@
 
 ## 部署（GitHub Pages）
 
-纯静态多文件架构，无需构建：仓库 Settings → Pages → Deploy from a branch（`main` / 根目录）即可，线上地址 `https://<用户名>.github.io/<仓库名>/`。政策数据远端更新通道依赖同源部署（推送即发布）；file:// 双击打开仍完整可用（远端通道自动跳过，由种子 JS 兜底）。推送/PR 时 GitHub Actions（`.github/workflows/ci.yml`）自动跑种子一致性、政策时效门禁与八套件回归门（Node 18/20/22 矩阵）。
+纯静态多文件架构，无需构建：本仓库通过 `.github/workflows/pages.yml` 运行回归检查并部署 GitHub Pages；仓库 Settings → Pages 的构建来源需设为 **GitHub Actions**。页面、脚本、样式和政策数据使用相对路径，可部署在仓库子路径。政策数据远端更新通道依赖同源部署；file:// 双击打开仍可使用种子 JS 离线数据。原有 `.github/workflows/ci.yml` 在推送/PR 时运行 Node 18/20/22 矩阵回归、种子一致性与政策时效检查。
 
 ## 计税规则
 
@@ -177,3 +185,5 @@
 ## License
 
 MIT License
+
+原仓库 README 声明项目采用 MIT License，源仓库没有单独的根目录 LICENSE 文件；本仓库补充 [MIT 许可正文](LICENSE)，保留原有声明及项目内版权标识，未推断未注明的版权持有人。第三方资源适用其各自的许可，见 [第三方许可说明](third-party-licenses/README.md)。
