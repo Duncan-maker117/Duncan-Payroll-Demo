@@ -174,8 +174,8 @@
     setIncomeType('labor');
     PagePolicy.onPmCityChange();   // 政策库页初始化：城市下拉 + 编辑器 + 存储状态
 
-    // 自检（初始化完成后运行，console 输出结果；node tests/run.js 跑同一份断言）
-    if (window.TaxTest) TaxTest.runAll();
+    // 回归自检由 node tests/run.js 或手动调用 TaxTest.runAll() 执行，
+    // 避免自动自检的模拟批量数据污染正在使用的页面状态。
 
     // 直开分享链接（hash 即 #/share）：待页面与各模块就绪后再还原数据
     booted = true;
